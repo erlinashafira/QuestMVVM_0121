@@ -8,10 +8,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.prak8.model.DataJK.JenisK
 
 enum class Navigasi {
     Formulir,
@@ -35,6 +37,20 @@ fun SiswaApp(
             composable(route = Navigasi.Formulir.name){
                 val konteks = LocalContext.current
                 FormSiswa(
+                    pilihanJK = JenisK.map { id -> konteks.resources.getString(id)},
+                    onSubmitButtonClicked = {
+                        viewModel.setSiswa(it)
+                        navController.navigate(Navigasi.Detail.name)
+                    }
+                )
             }
+            composable(route = Navigasi.Detail.name){
+                TampilSiswa(
+                    statusUiSiswa = uiState.value,
+                    onBackButtonClicked = { cancelAndBackToFormulir(navController)}
+                )
+            }
+
+        }
     }
 }

@@ -14,6 +14,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.prak8.model.DataJK.JenisK
+import com.example.prak8.view.FormSiswa
+import com.example.prak8.view.TampilSiswa
+import com.example.prak8.viewmodel.SiswaViewModel
 
 enum class Navigasi {
     Formulir,

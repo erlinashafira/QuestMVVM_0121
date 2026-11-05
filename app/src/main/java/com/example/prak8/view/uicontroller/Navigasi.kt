@@ -54,3 +54,10 @@ fun SiswaApp(
         }
     }
 }
+
+
+private fun cancelAndBackToFormulir(
+    navController: NavController
+){
+    navController.popBackStack(Navigasi.Formulir.name,inclusive = false)
+}
